@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoBazaaR - Website Automation & Marketing Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #121212;
+            --dark-secondary: #1e1e1e;
+            --accent-yellow: #FFD700;
+            --accent-yellow-dark: #d4b000;
+            --gray-text: #b0b0b0;
+            --light-gray: #2a2a2a;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--dark-secondary);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-yellow);
+        }
+
+        .logo span {
+            color: var(--white);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0 auto; /* Center the navigation links */
+        }
+
+        .nav-links li {
+            margin: 0 1.5rem; /* Adjusted spacing */
+        }
+
+        .nav-links a {
+            color: var(--gray-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-yellow);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--accent-yellow);
+        }
+
+        .hero p {
+            color: var(--gray-text);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-yellow);
+            color: var(--dark-bg);
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--accent-yellow-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-yellow);
+            color: var(--accent-yellow);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-yellow);
+            color: var(--dark-bg);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-yellow);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--dark-secondary);
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--dark-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent-yellow);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--gray-text);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease;
+        }
+
+        .about-text.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--gray-text);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.6s ease;
+        }
+
+        .about-image.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Features Section */
+        .features {
+            background-color: var(--dark-secondary);
+        }
+
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature {
+            background-color: var(--dark-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .feature.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--accent-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            margin-bottom: 1rem;
+        }
+
+        .feature p {
+            color: var(--gray-text);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact-info {
+            text-align: center;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .contact-info.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--gray-text);
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-details div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-details i {
+            font-size: 1.2rem;
+            color: var(--accent-yellow);
+            margin-right: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--light-gray);
+            color: var(--accent-yellow);
+            border-radius: 50%;
+            transition: var(--transition);
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-yellow);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+        }
+
+        /* Portfolio Link */
+        .portfolio-link {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .portfolio-link a {
+            color: var(--accent-yellow);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent-yellow);
+            transition: var(--transition);
+        }
+
+        .portfolio-link a:hover {
+            color: var(--white);
+            border-bottom-color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-secondary);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links li {
+            margin: 0 1rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-social a {
+            color: var(--gray-text);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            color: var(--accent-yellow);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInFromLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInFromRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInFromBottom {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--dark-secondary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+                color: var(--white);
+                font-size: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+
+        /* Button Line Animation */
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .btn:hover::after {
+            transform: translateX(100%);
+        }
+        .fade-in-up {
+             opacity: 1 !important;
+             transform: translateY(0) !important;
+             transition: all 0.6s ease-out;
+        }
+
+        .fade-out-down {
+            opacity: 0 !important;
+            transform: translateY(30px) !important;
+            transition: all 0.6s ease-in;
+        }
+
+/* Optional hover interactivity */
+        .service-card:hover, .feature:hover {
+            transform: scale(1.03);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">AutoBazaa<span>R</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Automate Your <span>Online Business</span></h1>
+            <p>Seamlessly connect your website to Snipcart and sell products online effortlessly. We'll handle the technical integration while you focus on growing your sales.</p>
+            <div class="btn-container">
+                <a href="#contact" class="btn">Get Started</a>
+                <a href="#services" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+        </div>
+        <div class="services-container">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Website Automation</h3>
+                <p>Link your website to your shop and automate your sales process. Manage inventory, orders, and customer data all in one place.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3>Snipcart Integration</h3>
+                <p>We'll implement Snipcart to handle all your e-commerce needs. Perfect solution for selling digital or physical products online.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>Content Management</h3>
+                <p>Full content and page management for your website and social media handles. Keep your online presence fresh and engaging.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3>Marketing Solutions</h3>
+                <p>We promote your products and services to help you reach more customers. Targeted campaigns for maximum impact.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Our team is always available to help you with any issues or questions you might have about our services.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-title">
+            <h2>About Us</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>From local store to Online selling</h3>
+                <p>We specialize in connecting your website to Snipcart's powerful e-commerce platform. Our team will handle the complete integration process, ensuring your products are properly linked and ready to sell online with minimal effort on your part.</p>
+                <p>With our Snipcart solutions, you'll get a complete management system that takes care of everything from product listings to order fulfillment, while we maintain the technical backend for you.</p>
+                <div class="portfolio-link">
+                    <a href="https://github.com/tirthpatel1356/website_with_snipcart" target="_blank">View Our Past Projects →</a>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="E-commerce integration">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>Key Features</h2>
+        </div>
+        <div class="features-container">
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-plug"></i>
+                </div>
+                <h3>Easy Integration</h3>
+                <p>Connect your existing website with Snipcart through our simple integration process. Works with all major platforms.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile Friendly</h3>
+                <p>All our solutions are optimized for mobile devices, ensuring your customers have a great shopping experience.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <h3>Fast Performance</h3>
+                <p>Our systems are built for speed, ensuring your website loads quickly and processes orders efficiently.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Secure Payments</h3>
+                <p>All transactions are processed with the highest security standards to protect your business and customers.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3>Cloud Based</h3>
+                <p>Access your dashboard from anywhere. No software installation required - just log in and go.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>Customizable</h3>
+                <p>Tailor our solutions to fit your specific business needs with customizable options and settings.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p>Ready to integrate shopping with your website? Contact us today to get started.</p>
+                <div class="contact-details">
+                    <div>
+                        <i class="fas fa-phone"></i>
+                        <span>+91 9662917745</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <span>tirhpatel1356@gmail.com</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://instagram.com/tirth.fr" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">AutoBazaa<span>R</span></div>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="footer-social">
+                <a href="https://instagram.com/tirth.fr" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 AutoBazaaR. All rights reserved made by <a href="https://github.com/tirthpatel1356" target="_blank">TirthCodes</a> </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Mobile menu toggle
+            $('.hamburger').click(function() {
+                $('.nav-links').toggleClass('active');
+                $(this).html($(this).html() === '<i class="fas fa-bars"></i>' ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>');
+            });
+
+            // Smooth scrolling for anchor links
+            $('a[href*="#"]').on('click', function(e) {
+                e.preventDefault();
+                
+                $('html, body').animate(
+                    {
+                        scrollTop: $($(this).attr('href')).offset().top - 70,
+                    },
+                    500,
+                    'linear'
+                );
+                
+                // Close mobile menu if open
+                if ($('.nav-links').hasClass('active')) {
+                    $('.nav-links').removeClass('active');
+                    $('.hamburger').html('<i class="fas fa-bars"></i>');
+                }
+            });
+
+            // Scroll animations
+            function checkScroll() {
+                const windowHeight = $(window).height();
+                const windowTop = $(window).scrollTop();
+                const windowBottom = windowTop + windowHeight;
+                
+                $('.service-card, .about-text, .about-image, .feature, .contact-info').each(function() {
+                    const element = $(this);
+                    const elementHeight = element.outerHeight();
+                    const elementTop = element.offset().top;
+                    const elementBottom = elementTop + elementHeight;
+                    
+                    // Check if element is in viewport
+                    if (elementBottom >= windowTop && elementTop <= windowBottom) {
+                        element.addClass('visible');
+                    }
+                });
+            }
+            
+            // Run on load and scroll
+            $(window).on('scroll load', checkScroll);
+            checkScroll(); // Run once on page load
+        });
+    </script>
+</body>
+</html>
