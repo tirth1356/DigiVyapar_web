@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoBazaaR - Website Automation & Marketing Solutions</title>
+    <title>DukaanLink - Website Automation & Marketing Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
@@ -60,11 +60,11 @@
         .nav-links {
             display: flex;
             list-style: none;
-            margin: 0 auto; /* Center the navigation links */
+            margin: 0 auto; 
         }
 
         .nav-links li {
-            margin: 0 1.5rem; /* Adjusted spacing */
+            margin: 0 1.5rem; 
         }
 
         .nav-links a {
@@ -99,7 +99,7 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
+       
         .hero {
             height: 100vh;
             display: flex;
@@ -476,7 +476,7 @@
             font-size: 0.9rem;
         }
 
-        /* Animations */
+        
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -497,7 +497,6 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
-        /* Responsive Styles */
         @media (max-width: 992px) {
             .about-content {
                 grid-template-columns: 1fr;
@@ -551,7 +550,7 @@
             }
         }
 
-        /* Button Line Animation */
+       
         .btn::after {
             content: '';
             position: absolute;
@@ -579,7 +578,7 @@
             transition: all 0.6s ease-in;
         }
 
-/* Optional hover interactivity */
+
         .service-card:hover, .feature:hover {
             transform: scale(1.03);
             transition: all 0.3s ease;
@@ -588,10 +587,10 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+  
     <header>
         <nav>
-            <div class="logo">AutoBazaa<span>R</span></div>
+            <div class="logo">DukaanLin<span>K</span></div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
@@ -605,7 +604,7 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Automate Your <span>Online Business</span></h1>
@@ -617,7 +616,7 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    
     <section class="services" id="services">
         <div class="section-title">
             <h2>Our Services</h2>
@@ -661,7 +660,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    
     <section class="about" id="about">
         <div class="section-title">
             <h2>About Us</h2>
@@ -681,7 +680,7 @@
         </div>
     </section>
 
-    <!-- Features Section -->
+   
     <section class="features" id="features">
         <div class="section-title">
             <h2>Key Features</h2>
@@ -732,7 +731,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    
     <section class="contact" id="contact">
         <div class="section-title">
             <h2>Contact Us</h2>
@@ -743,12 +742,12 @@
                 <p>Ready to integrate shopping with your website? Contact us today to get started.</p>
                 <div class="contact-details">
                     <div>
-                        <i class="fas fa-phone"></i>
-                        <span>+91 9662917745</span>
-                    </div>
-                    <div>
                         <i class="fas fa-envelope"></i>
-                        <span>tirhpatel1356@gmail.com</span>
+                        <span>tirhpatel1366@gmail.com</span>
+                    </div>
+                     <div>
+                        <i class="fas fa-envelope"></i>
+                        <span>huzefa.noor006@gmail.com</span>
                     </div>
                 </div>
                 <div class="social-links">
@@ -763,7 +762,7 @@
     
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">AutoBazaa<span>R</span></div>
+            <div class="footer-logo">DukaanLin<span>K</span></div>
             <ul class="footer-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
@@ -771,24 +770,21 @@
                 <li><a href="#features">Features</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="footer-social">
-                <a href="https://instagram.com/tirth.fr" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-            <p class="copyright">&copy; 2025 AutoBazaaR. All rights reserved made by <a href="https://github.com/tirthpatel1356" target="_blank">TirthCodes</a> </p>
+            <p class="copyright">&copy; 2025 DukaanLink. All rights reserved made by <a href="https://github.com/tirthpatel1356" target="_blank">TirthCodes</a> </p>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Mobile menu toggle
+           
             $('.hamburger').click(function() {
                 $('.nav-links').toggleClass('active');
                 $(this).html($(this).html() === '<i class="fas fa-bars"></i>' ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>');
             });
 
-            // Smooth scrolling for anchor links
+            
             $('a[href*="#"]').on('click', function(e) {
                 e.preventDefault();
                 
@@ -800,14 +796,14 @@
                     'linear'
                 );
                 
-                // Close mobile menu if open
+              
                 if ($('.nav-links').hasClass('active')) {
                     $('.nav-links').removeClass('active');
                     $('.hamburger').html('<i class="fas fa-bars"></i>');
                 }
             });
 
-            // Scroll animations
+          
             function checkScroll() {
                 const windowHeight = $(window).height();
                 const windowTop = $(window).scrollTop();
@@ -819,16 +815,16 @@
                     const elementTop = element.offset().top;
                     const elementBottom = elementTop + elementHeight;
                     
-                    // Check if element is in viewport
+                    
                     if (elementBottom >= windowTop && elementTop <= windowBottom) {
                         element.addClass('visible');
                     }
                 });
             }
             
-            // Run on load and scroll
+           
             $(window).on('scroll load', checkScroll);
-            checkScroll(); // Run once on page load
+            checkScroll(); 
         });
     </script>
 </body>
