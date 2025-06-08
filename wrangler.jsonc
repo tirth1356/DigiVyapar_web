@@ -1,7 +1,7 @@
 {
-02:07:37.503	    "name": "nexora",
-02:07:37.503	    "compatibility_date": "2025-06-08",
-02:07:37.503	    "assets": {
-02:07:37.503	      "directory": "./dist"
-02:07:37.503	    }
-02:07:37.504	  }
+  "name": "nexora",
+  "compatibility_date": "2025-06-08",
+  "assets": {
+  "directory": "./dist"
+}
+}
