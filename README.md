@@ -1,6 +1,6 @@
-# AutocartX
+# DigiVyapaR
 Project Overview:-
-AutoCartX is a modern web solution designed to help businesses automate their online sales and marketing processes. The platform specializes in seamless Snipcart integration, allowing businesses to quickly add e-commerce functionality to their existing websites. With additional features for content management and marketing automation, AutoCartX provides a comprehensive solution for online businesses looking to streamline their operations.
+DigiVyapaR is a modern web solution designed to help businesses automate their online sales and marketing processes. The platform specializes in seamless Snipcart integration, allowing businesses to quickly add e-commerce functionality to their existing websites. With additional features for content management and marketing automation, AutoCartX provides a comprehensive solution for online businesses looking to streamline their operations.
 
 The website features a responsive, dark-themed design with smooth animations and intuitive navigation, providing an excellent user experience across all devices.
 
@@ -48,8 +48,8 @@ View the services offered in the Services section
 Check out example integrations in the portfolio
 
 images preview - 
-![image](https://github.com/user-attachments/assets/37981432-05d6-4d17-a9c4-4b7512edfe8b)
-![image](https://github.com/user-attachments/assets/62ed949d-2b44-43fb-a207-de1345cbc240)
+![image](https://github.com/user-attachments/assets/156ec2c8-4ec0-41ee-bbf7-a8770b32652e)
+![image](https://github.com/user-attachments/assets/63bd3645-f35a-4cdb-b1cf-8f13533af362)
 
 
 
